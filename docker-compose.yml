@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: bike-postgres
+    environment:
+      POSTGRES_DB: bikedb
+      POSTGRES_USER: bikeuser
+      POSTGRES_PASSWORD: bikepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  bike-service:
+    image: arunt2005/bike-service:latest
+    container_name: bike-service
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bikedb
+      SPRING_DATASOURCE_USERNAME: bikeuser
+      SPRING_DATASOURCE_PASSWORD: bikepass
+
+volumes:
+  pgdata:
