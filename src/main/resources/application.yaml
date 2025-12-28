@@ -2,9 +2,9 @@ spring:
   application:
     name: bike-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/bikedb
-    username: bikeuser
-    password: bikepass
+    url: postgresql://bike_postgress_user:xFt2hATBvBqptgpYIXRWWT9ycAxQwRam@dpg-d5952m3e5dus73ea7jbg-a/bike_postgress
+    username: bike_postgress_user
+    password: xFt2hATBvBqptgpYIXRWWT9ycAxQwRam
   jpa:
     hibernate:
       ddl-auto: update
